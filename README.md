@@ -149,5 +149,39 @@ python -m src.run_device_experiments --processes 4
 ```
 
 
+## Further instruction on Mapper Experiments
+
+# What DSE_mapper.py does
+1. Loads all .qasm files from circuits/
+2. Sweeps over parameters
+3. Transpiles each circuit for each configuration
+4. Writes all results into a single CSV or Excel file
+
+# Compiler Design Parameters
+
+The design space explored corresponds to:
+
+- **Optimisation Level:** `0, 1, 2`
+- **Layout Method:** `sabre`, `dense`, `trivial`
+- **Routing Technique:** `sabre`, `stochastic`
+- **Additional Optimisation Setups:** `0–5`  
+  (`0` = no extra setup, `1–5` = custom PassManager presets)
+- **Scheduling Method:** `ALAP` (Qiskit default)
+
+
+# Running with Defaults (Quickstart) - from repository root
+```bash
+python run_mapper_experiments.py \
+  --circuits-dir circuits/ \
+  --out results/mapper_results.csv
+```
+
+--include-bristlecone / --no-bristlecone
+--include-custom-density-maps / --no-custom-density-maps
+--custom-density-values 0.013895,0.03,0.05,0.1,0.3,0.5,0.8
+--custom-density-n-qubits 128
+
+
+
 
 
