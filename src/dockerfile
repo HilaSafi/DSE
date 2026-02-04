@@ -8,13 +8,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt/DSE
-ENV PYTHONPATH=/opt/DSE
+WORKDIR /opt
 
 # Clone repo
 RUN git clone --depth 1 https://github.com/HilaSafi/DSE.git
 
 WORKDIR /opt/DSE
+ENV PYTHONPATH=/opt/DSE
 
 # Create conda env
 RUN conda create -y -n device_experiments python=3.10 && \
