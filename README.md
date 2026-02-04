@@ -69,21 +69,19 @@ python mapper_experiments/run_mapper_experiment.py
 ```
 
 ## Repository Structure
+
+```text
 repo-root/
-│
-├── circuits/               # Input quantum circuits (.qasm)
+├── circuits/                  # Input quantum circuits (.qasm)
 │   ├── circuit1.qasm
 │   ├── circuit2.qasm
 │   └── ...
-│
 ├── src/
-│   └── run_device_experiments.py   # Main experiment runner
-│
-├── results/                # Auto-generated outputs (created if missing)
-│   ├── *.csv               # Experiment results
-│   └── *.log               # Logs
-│
-├── topology_functions.py   # Topology + coupling helpers
+│   └── topology_functions.py  # Topology + coupling helpers
+├── results/                   # Auto-generated outputs (created if missing)
+│   ├── *.csv                  # Experiment results
+│   └── *.log                  # Logs
+├── run_device_experiments.py  # Main experiment runner
 ├── README.md
 └── requirements.txt
 
