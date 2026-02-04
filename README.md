@@ -176,10 +176,18 @@ python run_mapper_experiments.py \
   --out results/mapper_results.csv
 ```
 
---include-bristlecone / --no-bristlecone
---include-custom-density-maps / --no-custom-density-maps
---custom-density-values 0.013895,0.03,0.05,0.1,0.3,0.5,0.8
---custom-density-n-qubits 128
+# Device Topology Options
+1. include-bristlecone / --no-bristlecone
+2. include-custom-density-maps / --no-custom-density-maps
+3. custom-density-values 0.013895,0.03,0.05,0.1,0.3,0.5,0.8
+4. custom-density-n-qubits 128
+
+# Compiler Design Space Options
+1. optimization-levels 0,1,2
+2. routing-methods stochastic,sabre
+3. layout-methods trivial,dense,sabre
+4. setups 0,1,2,3,4,5
+5. basis-gates x,y,z,rx,ry,rz,cx,cy
 
 
 
