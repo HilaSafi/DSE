@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /opt
+WORKDIR /opt/DSE
+ENV PYTHONPATH=/opt/DSE
 
 # Clone repo
 RUN git clone --depth 1 https://github.com/HilaSafi/DSE.git
