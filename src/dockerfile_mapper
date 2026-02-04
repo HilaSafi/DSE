@@ -1,0 +1,36 @@
+FROM continuumio/miniconda3:latest
+
+SHELL ["/bin/bash", "-lc"]
+
+# System deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+# Clone repo
+WORKDIR /opt
+RUN git clone https://github.com/HilaSafi/DSE.git
+
+# Repo root
+WORKDIR /opt/DSE
+ENV PYTHONPATH=/opt/DSE
+
+# Create conda env (Python 3.10)
+RUN conda update -n base -c defaults -y conda && \
+    conda create -y -n mapper_experiments python=3.10 && \
+    conda clean -afy
+
+# Ensure the env python is the default python
+ENV PATH=/opt/conda/envs/mapper_experiments/bin:$PATH
+
+# Install mapper-only requirements
+RUN python -m pip install --upgrade pip && \
+    pip install -r requirements_mapper.txt
+
+# Entrypoint
+COPY entrypoint_mapper.sh /usr/local/bin/entrypoint_mapper.sh
+RUN chmod +x /usr/local/bin/entrypoint_mapper.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint_mapper.sh"]
+CMD ["bash"]
