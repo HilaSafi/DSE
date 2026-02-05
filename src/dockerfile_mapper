@@ -28,7 +28,7 @@ RUN conda run -n mapper_experiments python -m pip install --upgrade pip && \
 
 # Copy entrypoint script into image
 COPY entrypoint_mapper.sh /entrypoint_mapper.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint_mapper.sh
 
 # Default command: start interactive prompt script
 ENTRYPOINT ["/entrypoint_mapper.sh"]
