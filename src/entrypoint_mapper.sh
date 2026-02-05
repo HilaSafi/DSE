@@ -12,9 +12,11 @@ echo ""
 conda run -n mapper_experiments python -c "import sys; print('Python:', sys.executable)"
 conda run -n mapper_experiments python -c "import pandas as pd; print('pandas OK', pd.__version__)"
 
+DEFAULT_ARGS="--circuits-dir circuits/ --out results/mapper_results.csv"
+
 if [[ "${RUN_DEFAULT:-}" == "yes" ]]; then
   echo "RUN_DEFAULT=yes -> running default mapper experiment..."
-  exec conda run --no-capture-output -n mapper_experiments python -u src/run_mapper_experiments.py
+  exec conda run --no-capture-output -n mapper_experiments python -u src/run_mapper_experiments.py ${DEFAULT_ARGS}
 fi
 
 read -r -p "Run default mapper experiments now? [y/N]: " ans
