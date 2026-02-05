@@ -15,6 +15,6 @@ if [[ "$ans" =~ ^[Yy]$ ]]; then
   python src/run_device_experiments.py
 else
   echo "Dropping you into a shell. You're in /opt/DSE with env activated."
-  exec bash -lc "source /opt/conda/etc/profile.d/conda.sh && conda activate device_experiments && cd /opt/DSE && exec bash"
+  exec bash --noprofile --norc
 
 fi
