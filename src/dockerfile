@@ -20,6 +20,8 @@ ENV PYTHONPATH=/opt/DSE
 RUN conda create -y -n device_experiments python=3.10 && \
     conda clean -afy
 
+ENV PATH=/opt/conda/envs/device_experiments/bin:$PATH
+
 # Install requirements from repo root (NOT src/)
 RUN conda run -n device_experiments python -m pip install --upgrade pip && \
     conda run -n device_experiments pip install -r requirements.txt
